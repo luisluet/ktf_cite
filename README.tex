@@ -1,0 +1,109 @@
+\documentclass[12pt]{article}
+
+%%%%%%%%%%%%abstract%%%%%%%%%%%%%%%
+%Version 1.0 vom 03.11.2021
+%Autor: Luis Lütkehellweg
+%contact: luis@luetkehellweg.de
+
+%%%%Packages%%%%%
+%Document and Language Setup
+\usepackage[a4paper,top=2.5cm,bottom=2.5cm,left=3cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\usepackage[ngerman]{babel}
+\usepackage{fontspec}
+\setmainfont{Avenir Next}
+%Package for quotation
+\usepackage{ktf_cite}
+
+%Bibliothek
+\addbibresource{/Users/luisluetkehellweg/Documents/Zitierstile/ktf_cite/sample.bib}
+
+\title{\LaTeX-Cite Style für die KTF der Uni Bonn \\ Dokumentation}
+\author{Luis Lütkehellweg}
+
+\begin{document}
+\maketitle
+\begin{center}
+	\large{Version 1.1}
+\end{center}
+
+
+\bigskip
+
+\begin{abstract}
+Dieser \LaTeX-Zitierstil setzt die Vorgaben der Katholisch-Theologischen-Fakultät der Universität Bonn um. Diese sind aus dem Reader zum wissenschaftlichen Arbeiten entnommen. Standardmäßig wird ein AuthorTitle-Stil in der Fußnote zum Zitieren genutzt. \bigbreak
+\textbf{Release Notes}
+\begin{itemize}
+	\item URLs werden nun unterstützt und nach den Vorgaben des AT formatiert, das ist insbesondere für das WiBiLex wichtig. Dazu: Lexikoneinträge (\ref{Lexikon}).
+\end{itemize}
+\end{abstract}
+\bigskip
+\hrule
+\bigskip
+\section{Einbinden des Stils}
+Für den Stil ist das Package \href{https://github.com/moewew/biblatex-ext}{\textit{biblatex-ext}} erforderlich. Es ist in MiKTeX und TeX Live enthalten.
+
+Um den Stil einzubinden, wird die Datei \verb#ktf_cite.sty# in den gleichen Ordner, wie das \verb#.tex#-Dokument gelegt und kann dann über \verb#\usepackage{ktf_cite}# eingebunden werden. Das Festlegen von Papier, Seitenrändern, etc. erfolgt im \verb#.tex#-Dokument.
+
+Das zugehörige \verb_.bib_-Dokument wird über 
+\begin{verbatim}
+	\addbibresource{\Path\To\Bib}
+\end{verbatim}
+eingebunden.
+
+\section{BibTeX-Eingabetypen für die verschiedenen Literaturtypen}
+\subsection*{Monographien und Sammelbände}
+Für Monographien und das Zitieren ganzer Sammelbände wird der entrytype \nocite{*}
+\begin{verbatim}
+	@book
+\end{verbatim}
+benutzt. Der Bibliographieeintrag sieht folgendermaßen aus:
+\printbibliography[type=book, title={}]
+
+\subsection*{Aufsatz im Sammelband}
+Für Aufsätze in einem Sammelband wird der entrytype
+\begin{verbatim}
+	@incollection
+\end{verbatim}
+benutzt. Der Bibliographieeintrag sieht folgendermaßen aus:
+\printbibliography[type=incollection, title={}]
+
+
+\subsection*{Beiträge in Fachzeitschriften}
+Für Artikel in Fachzeitschriften wird der entrytype \nocite{*}
+\begin{verbatim}
+	@article
+\end{verbatim}
+benutzt. Der Bibliographieeintrag sieht folgendermaßen aus:
+\printbibliography[type=article, title={}]
+
+\subsection*{Lexikoneinträge} \label{Lexikon}
+Für Lexikoneinträge wird der entrytype \nocite{*}
+\begin{verbatim}
+	@inreference
+\end{verbatim}
+benutzt. Onlineressourcen wie das WiBiLex werden auch unterstützt. Dafür müssen die Tags \verb#url# und \verb#urldate# genutzt werden. Das Datum bei \verb#urldate# muss in der Form JJJJ-MM-TT eingetragen werden.   Der Bibliographieeintrag sieht folgendermaßen aus:
+\printbibliography[type=inreference, title={}]
+
+\subsection*{Bibelzitate}
+Bibelzitate werden noch nicht unterstützt.
+
+\section{Zitieren und Bibliographien}
+Standardmäßig nutzt der Stil eine AuthorTitle-Zitierweise in der Fußnote, dafür kann einfach
+\begin{verbatim}
+	\autocite{cite_key}
+\end{verbatim}
+benutzt werden. Das sieht beispielsweise so\autocite{berger_liturgie_1990} aus. Alle zitierten Werke tauchen dann automatisch im Literaturverzeichnis auf, das mit 
+\begin{verbatim}
+	\printbibliography
+\end{verbatim}
+in das Dokument eingebunden wird.
+
+\section{Melden falscher Zitierweisen und Fehler}
+Falls ein Fehler im Stil auffällt, zum Beispiel nicht entsprechend des Readers zitiert wird, kann das mit einer Beispielbibliographie als Issue auf GitHub eingetragen werden oder an \href{mailto:ktf-zitierstil@uni-bonn.de}{ktf-zitierstil@uni-bonn.de} gemeldet werden.
+
+\section{Github Repository}
+Das GitHub Repository ist \href{https://github.com/luisluet/ktf_cite/}{hier} verfügbar. Dort finden sich alle Versionen ab 1.1 und die dazugehörigen Release-Notes.
+
+\section{Lizenz und Disclaimer}
+Der Stil ist über die MIT License lizensiert. Die Benutzung der Vorlage erfolgt auf eigene Gefahr und unter Ausschluss jeglicher Haftung durch den Ersteller des Stils.
+\end{document}

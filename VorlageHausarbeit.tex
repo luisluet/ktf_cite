@@ -1,0 +1,77 @@
+\documentclass[12pt]{article}
+
+%%%%%%%%%%%%abstract%%%%%%%%%%%%%%%
+%Version 1.0 vom 03.11.2021
+%Autor: Luis Lütkehellweg
+%contact: luis@luetkehellweg.de
+
+%%%%Packages%%%%%
+%Document and Language Setup
+\usepackage[a4paper,top=2.5cm,bottom=2.5cm,left=3cm,right=2cm,marginparwidth=1.75cm]{geometry}
+\usepackage[ngerman]{babel}
+\setlength{\parindent}{0mm} % no paragraph indentation
+\usepackage{fontspec}
+\setmainfont{TeX Gyre Termes} %ich habe noch keine gute Möglichkeit gefunden, Arial zu verwenden.
+\usepackage[onehalfspacing]{setspace} %1.5 line space
+
+\usepackage{lipsum} %für Platzhaltertext
+
+%Package for quotation
+\usepackage{ktf_cite}
+
+%Bibliothek
+\addbibresource{/Users/luisluetkehellweg/Documents/Zitierstile/ktf_cite/sample.bib}
+
+%Dokument
+\begin{document}
+%%%%%%%%%%%%Titelseite%%%%%%%%%%
+\begin{titlepage}
+ \begin{center}
+	\large 
+	Rheinische Friedrich-Wilhelms-Universität Bonn \\ 
+	Katholisch Theologische Fakultät \\ 
+	Seminar\\
+	\vspace{1.5cm} 
+	Wintersemester 2021/2022 \\
+	\vfill
+	
+	\underline{Seminar:} \medbreak
+	\textbf{Seminartitel}\\
+	\vspace{0.5 cm} 
+	Prof xxx durch x. yyy\\
+	\vspace{1.5cm}
+	\underline{Seminararbeit:} \medbreak
+	\textbf{Titel}\\
+	 Untertitel
+ \end{center}
+ \vfill
+ 
+ vorgelegt von:\\
+ Luis Lütkehellweg \\
+ Straße Haunummer \\
+ 53111 Bonn \\
+\href{mailto:name@uni-bonn.de}{name@uni-bonn.de}  \\
+0228 666666 \medbreak
+Matrikelnummer: 222222\\
+Katholische Theologie, Bachelor of Arts \\
+1. Fachsemester\\
+\end{titlepage}
+
+\tableofcontents
+\newpage
+
+\section{Einleitung}
+\lipsum[2-4]
+\section{Hauptteil}
+\subsection{HT 1}
+\nocite{*} %zu entfernen, ist da, um in der Vorlage ein Literaturverzeichnis zu ermöglichen
+
+\lipsum[1-7]
+\subsection{HT 2}
+\lipsum[8-12]
+\section{Fazit}
+\lipsum
+
+\printbibliography
+
+\end{document}
