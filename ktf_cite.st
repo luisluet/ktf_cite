@@ -76,12 +76,30 @@
 \renewcommand*{\mkbibnameprefix}[1]{\textsc{#1}}
 
 %Edition in superscript
-\renewbibmacro*{edition}{}\DeclareFieldFormat{superedition}{\textsuperscript{#1}}\newbibmacro*{superedition}{%\iffieldnums{edition}{\printfield[superedition]{edition}}{\printfield{edition}%\setunit{\addspace}}}\renewcommand*{\pubdatedelim}{\addspace}\renewcommand*{\locdatedelim}{\pubdatedelim}
-\renewbibmacro*{pubinstorg+location+date}[1]{%
+\renewbibmacro*{edition}{}
+\DeclareFieldFormat{superedition}{\textsuperscript{#1}}
+\newbibmacro*{superedition}{%
+\iffieldnums{edition}
+{\printfield[superedition]{edition}}
+{\printfield{edition}%
+\setunit{\addspace}}}
+\renewcommand*{\pubdatedelim}{\addspace}
+\renewcommand*{\locdatedelim}{\pubdatedelim}
+
+\renewbibmacro*{pubinstorg+location+date}[1]{%
 \ifentrytype{inreference}{
 	\setunit{\addspace}
 	\printtext[parens]{\usebibmacro{date}}
-	}{	\printlist{location}%	\iflistundef{#1}	{\setunit*{\locdatedelim}}	{\setunit*{\locpubdelim}}%	\printlist{#1}%	\setunit*{\pubdatedelim}%	\usebibmacro{superedition}%	\usebibmacro{date}%\newunit}}
+	}{
+	\printlist{location}%
+	\iflistundef{#1}
+	{\setunit*{\locdatedelim}}
+	{\setunit*{\locpubdelim}}%
+	\printlist{#1}%
+	\setunit*{\pubdatedelim}%
+	\usebibmacro{superedition}%
+	\usebibmacro{date}%
+\newunit}}
 
 %Strings
 \NewBibliographyString{article}
