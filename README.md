@@ -2,6 +2,10 @@
 
 Please read the `README.pdf` which is made up with the style. There can be seen how the style handles various input types and how to use it.
 
+## Installation
+
+For using the style download `ktf_cite.sty` to the folder of your `.tex` document. The style is used by adding `\usepackage{ktf_cite}` to the preamble of your document.
+
 
 ## Template for Papers
 
