@@ -1,9 +1,10 @@
 %AUTOR: LUIS LÜTKEHELLWEG
-%VERSION: 1.1
-%DATE: 2022 - 03 - 17
-%RELEASE NOTES: 
+%VERSION: 1.1.1
+%DATE: 2022 - 05 - 06
+%RELEASE NOTES:
 % 2022 - 03 - 03 Modified @inreference style so that volume is printed correctly after booktitle
-% 2022 - 03 - 17 Added online resources (see README - Lexikoneinträge) especially for WiBiLex
+% 2022 - 03 - 17 Added online resources (see README - Lexikoneinträge) especially for WiBiLex 
+% 2022 - 05 - 06 Added bibleref to the package; added footnote customisation; added half space in mulitlist delimiter
 
 \ProvidesPackage{ktf_cite}
 
@@ -30,6 +31,25 @@
 \usepackage{graphicx}
 \usepackage[colorlinks=false, allcolors=blue, hidelinks]{hyperref}
 
+%%%%%%%%%Footnote Customisation%%%%%%%%%%%%%%%%%%%
+\usepackage[hang,flushmargin]{footmisc} %no footnote indent
+\let\myfootnote\footnote
+\renewcommand{\footnote}[1]{\myfootnote{~#1}} %adds space after number in footnote
+\newcommand\blfootnote[1]{%footnote without marker
+  \begingroup
+  \renewcommand\thefootnote{}\footnote{#1}%
+  \addtocounter{footnote}{-1}%
+  \endgroup
+}
+
+
+%%%%%%%%Bibleref Setup%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{bibleref-german}
+\biblerefstyle{Einheitsuebersetzung}
+\biblerefformat{kurz}
+\renewcommand{\BRperiod}{~}
+\setbooktitle{1Sam}{1\,Sam}
+
 %%%%%%%%%Zitationscustomisation%%%%%%%%%%%%%%
 %Delimiters%
 \renewcommand*{\multinamedelim}{\space \addslash \space}
@@ -40,7 +60,7 @@
 \renewcommand*{\newunitpunct}{\addcomma \space}
 \DeclareFieldFormat{editortype}{\mkbibparens{#1}}
 \DeclareDelimFormat{editortypedelim}{\addspace}
-\renewcommand*{\multilistdelim}{\addslash}
+\renewcommand*{\multilistdelim}{\;\addslash\;}
 \renewcommand*{\finallistdelim}{\multilistdelim}
 \renewcommand*{\bibpagespunct}{%
   \ifentrytype{article}{\addspace}{
@@ -107,7 +127,7 @@
   andothers = {u. a.},
   editor = {Hg.},
   editors = {Hg.},
-  volume = {},
+  volume = {Bd.},
   article = {Art \adddot},
 }
 %TODO move editor if there is book with author and editor given
@@ -209,4 +229,4 @@
     {}
     {\setunit*{\addspace}%
      \usebibmacro{urldate}}}
- 
+
